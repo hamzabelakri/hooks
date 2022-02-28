@@ -1,4 +1,6 @@
 import React,{useState} from "react";
+import "./Card.css";
+
 
 function Filter({ onSeqrch }) {
   
@@ -13,8 +15,8 @@ const   onSubmit=(event)=>{
 
 }
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" id="title" onChange={handleChange} />
+    <form className="Search" onSubmit={onSubmit}>
+      <input type="text" placeholder="Search for a movie" id="title" onChange={handleChange} />
       <button type="submit">search</button>
     </form>
   );

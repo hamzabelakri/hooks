@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import "./Card.css";
+
 
 function Add({ AddMovie }) {
   const [newMovie, setMovie] = useState({ id: 3, title: "", poster: "" });
@@ -17,7 +19,7 @@ function Add({ AddMovie }) {
     setMovie({ title: "", poster: "" });
   };
   return (
-    <Form onSubmit={onSubmit}>
+    <Form className="Form" onSubmit={onSubmit}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>New Collection</Form.Label>
         <Form.Control
@@ -31,11 +33,11 @@ function Add({ AddMovie }) {
           id="poster"
           value={newMovie.poster}
           type="text"
-          placeholder="post a image"
+          placeholder="post an image"
           onChange={HandleChange}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button style={{ textAlign: "center" }}variant="primary" type="submit">
         Add a Movie
       </Button>
     </Form>

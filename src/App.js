@@ -1,9 +1,14 @@
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MovieCard from './Components/MovieCard';
 import React, { useState, useEffect } from 'react';
-import Add from './Components/Add';
-import Filter from './Components/Filter';
+
+import Movie from './Components/Movie'
+import ListMovies from './Components/ListMovies';
 
 
 
@@ -20,6 +25,7 @@ function App() {
       decription:
         'Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.',
       rate: 2,
+      Url: 'https://www.youtube.com/watch?v=EXeTwQWrcwY',
     },
     {
       id: '2',
@@ -67,21 +73,14 @@ function App() {
       rate: 3,
     }]
 
-   const [movies, setMovie] = useState(collection)
-   const AddMovie=(newMovie) => {
-    setMovie ([...movies, newMovie])
-    
-  }
-const onSeqrch=(carcter)=>{
-  setMovie(movies.filter((elt)=>elt.title.toLowerCase().includes((carcter.toLowerCase()))))
-}
+
   return (
-    <div>
-      <Filter onSeqrch={onSeqrch}/>
-      <Add AddMovie={AddMovie}/>  
-     {movies.map((elt)=><MovieCard film={elt} key={elt.id}/>)}
-     
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ListMovies collection={collection}/>}/>
+        <Route path="/movie/:id" element={<Movie collection={collection}/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
